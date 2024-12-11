@@ -2,11 +2,9 @@
 import { onMounted, onUnmounted } from 'vue'
 import * as THREE from 'three'
 import { gsap } from 'gsap'
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 
-const { gameState, completeLevel, collectCard } = useGame()
+const { $game } = useNuxtApp()
+const { gameState, completeLevel, collectCard } = $game
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 let scene: THREE.Scene
@@ -47,26 +45,13 @@ const initThree = () => {
   directionalLight.position.set(0, 1, 1)
   scene.add(directionalLight)
   
-  // Add post-processing
-  composer = new EffectComposer(renderer)
-  const renderPass = new RenderPass(scene, camera)
-  composer.addPass(renderPass)
-  
-  const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    1.5, // strength
-    0.4, // radius
-    0.85 // threshold
-  )
-  composer.addPass(bloomPass)
-  
   // Start animation loop
   animate()
 }
 
 const animate = () => {
   animationFrameId = requestAnimationFrame(animate)
-  composer.render()
+  renderer.render(scene, camera)
 }
 
 const handleResize = () => {
@@ -75,7 +60,6 @@ const handleResize = () => {
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
   renderer.setSize(window.innerWidth, window.innerHeight)
-  composer.setSize(window.innerWidth, window.innerHeight)
 }
 
 const handleClick = (event: MouseEvent) => {

@@ -19,6 +19,12 @@ export default defineNuxtConfig({
   typescript: {
     strict: true
   },
+  imports: {
+    dirs: ['composables/**']
+  },
+  components: {
+    dirs: ['components']
+  },
   vite: {
     optimizeDeps: {
       include: ['@twa-dev/sdk']

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { gameState, initGame } = useGame()
+const { $game } = useNuxtApp()
+const { gameState, initGame } = $game
 const showMemories = ref(false)
 
 onMounted(() => {

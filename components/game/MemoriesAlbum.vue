@@ -4,7 +4,8 @@ import WebApp from '@twa-dev/sdk'
 import { gsap } from 'gsap'
 import type { Memory } from '~/composables/game/useGame'
 
-const { gameState, getUnlockedMemories, getMemoriesByCategory } = useGame()
+const { $game } = useNuxtApp()
+const { gameState, getUnlockedMemories, getMemoriesByCategory } = $game
 
 const selectedMemory = ref<Memory | null>(null)
 const selectedCategory = ref<Memory['category'] | 'all'>('all')
