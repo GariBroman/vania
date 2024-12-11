@@ -13,12 +13,12 @@
 		"@nuxt/devtools": "latest",
 		"nuxt": "^3.8.2",
 		"vue": "^3.3.12",
-		"vue-router": "^4.2.5"
+		"vue-router": "^4.2.5",
+		"@types/three": "^0.159.0"
 	},
 	"dependencies": {
 		"@twa-dev/sdk": "^6.9.1",
 		"gsap": "^3.12.4",
-		"three": "^0.159.0",
-		"@types/three": "^0.159.0"
+		"three": "^0.159.0"
 	}
 }
