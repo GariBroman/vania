@@ -23,5 +23,18 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: ['@twa-dev/sdk']
     }
+  },
+  nitro: {
+    preset: 'vercel',
+    prerender: {
+      crawlLinks: false,
+      routes: ['/']
+    }
+  },
+  experimental: {
+    payloadExtraction: false
+  },
+  routeRules: {
+    '/**': { ssr: true }
   }
 }) 
