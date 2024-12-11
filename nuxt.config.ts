@@ -25,16 +25,6 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: 'vercel',
-    prerender: {
-      crawlLinks: false,
-      routes: ['/']
-    }
-  },
-  experimental: {
-    payloadExtraction: false
-  },
-  routeRules: {
-    '/**': { ssr: true }
+    preset: 'node-server'
   }
 }) 
