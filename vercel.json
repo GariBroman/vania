@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm run build",
+  "devCommand": "pnpm run dev",
+  "framework": "nuxt",
+  "builds": [
+    {
+      "src": "nuxt.config.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/game/memories/(.*)",
+      "dest": "/game/memories/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "env": {
+    "NUXT_PUBLIC_TELEGRAM_BOT_TOKEN": "@telegram_bot_token"
+  }
+} 
